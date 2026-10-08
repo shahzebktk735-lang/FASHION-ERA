@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,
+initial-scale=1.0">
+<title>Freshen Era | Fashion Store</title>
+<style>
+/* =========================
+BASIC SETTINGS
+========================= */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+scroll-behavior:smooth;
+}
+body{
+background:#f7f7f7;
+color:#222;
+}
+/* =========================
+HEADER
+========================= */
+header{
+position:sticky;
+top:0;
+z-index:1000;
+background:#111;
+color:white;
+padding:15px 5%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+box-shadow:0 5px 20px rgba(0,0,0,.3);
+}
+.logo{
+font-size:28px;
+font-weight:bold;
+color:#f4c542;
+}
+.logo span{
+color:white;
+}
+nav{
+display:flex;
+gap:20px;
+}
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+nav a:hover{
+color:#f4c542;
+}
+.cart-button{
+background:#f4c542;
+color:#111;
+padding:10px 17px;
+border-radius:30px;
+cursor:pointer;
+font-weight:bold;
+}
+/* =========================
+HERO
+========================= */
+.hero{
+min-height:85vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:40px 20px;
+background:
+linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
+url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1600&q=80");
+background-size:cover;
+background-position:center;
+color:white;
+}
+.hero-content{
+animation:heroAnimation 1.5s ease;
+}
+.hero h1{
+font-size:65px;
+margin-bottom:20px;
+}
+.hero h1 span{
+color:#f4c542;
+}
+.hero p{
+font-size:20px;
+margin-bottom:30px;
+}
+.main-button{
+display:inline-block;
+background:#f4c542;
+color:#111;
+padding:14px 28px;
+border:none;
+border-radius:30px;
+text-decoration:none;
+font-weight:bold;
+cursor:pointer;
+transition:.4s;
+}
+.main-button:hover{
+transform:scale(1.08);
+box-shadow:0 10px 30px rgba(244,197,66,.5);
+}
+/* =========================
+SECTIONS
+========================= */
+section{
+padding:70px 6%;
+}
+.section-title{
+text-align:center;
+margin-bottom:40px;
+}
+.section-title h2{
+font-size:40px;
+margin-bottom:10px;
+}
+.section-title p{
+color:#777;
+}
+/* =========================
+CATEGORIES
+========================= */
+.categories{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:12px;
+margin-bottom:40px;
+}
+.category-button{
+padding:12px 22px;
+background:white;
+border:2px solid #111;
+border-radius:30px;
+cursor:pointer;
+transition:.3s;
+}
+.category-button:hover,
+.category-button.active{
+background:#111;
+color:#f4c542;
+}
+/* =========================
+PRODUCTS
+========================= */
+.products{
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(230px,1fr));
+gap:25px;
+}
+.product{
+background:white;
+border-radius:18px;
+overflow:hidden;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+transition:.4s;
+animation:productAnimation .8s ease;
+}
+.product:hover{
+transform:translateY(-10px);
+box-shadow:0 15px 35px rgba(0,0,0,.18);
+}
+.product-image-box{
+overflow:hidden;
+}
+.product img{
+width:100%;
+height:280px;
+object-fit:cover;
+transition:.5s;
+}
+.product:hover img{
+transform:scale(1.08);
+}
+.product-info{
+padding:18px;
+}
+.product-info h3{
+margin-bottom:8px;
+}
+.price{
+color:#c89500;
+font-size:20px;
+font-weight:bold;
+margin-bottom:15px;
+}
+.product-buttons{
+display:flex;
+gap:8px;
+}
+.product-buttons button{
+flex:1;
+padding:10px;
+border:none;
+border-radius:20px;
+cursor:pointer;
+font-weight:bold;
+transition:.3s;
+}
+.visit-button{
+background:#eee;
+}
+.add-button{
+background:#111;
+color:white;
+}
+.product-buttons button:hover{
+transform:scale(1.04);
+}
+/* =========================
+ABOUT
+========================= */
+.about{
+background:#111;
+color:white;
+text-align:center;
+}
+.about p{
+max-width:850px;
+margin:auto;
+line-height:1.8;
+color:#ddd;
+}
+.instagram-button{
+display:inline-block;
+margin-top:25px;
+padding:13px 25px;
+background:#e1306c;
+color:white;
+border-radius:30px;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+.instagram-button:hover{
+transform:scale(1.08);
+}
+/* =========================
+REVIEWS
+========================= */
+.reviews{
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+.review{
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+transition:.3s;
+}
+.review:hover{
+transform:translateY(-7px);
+}
+.stars{
+color:#f4c542;
+font-size:23px;
+margin-bottom:12px;
+}
+/* =========================
+REGISTRATION
+========================= */
+.form-box{
+max-width:650px;
+margin:auto;
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 5px 25px rgba(0,0,0,.12);
+}
+.form-box input,
+.form-box textarea{
+width:100%;
+padding:14px;
+margin:7px 0;
+border:1px solid #ddd;
+border-radius:10px;
+outline:none;
+}
+.form-box input:focus,
+.form-box textarea:focus{
+border-color:#f4c542;
+}
+.form-box button{
+width:100%;
+margin-top:12px;
+}
+/* =========================
+CART SIDE PANEL
+========================= */
+.cart-panel{
+position:fixed;
+right:-430px;
+top:0;
+width:400px;
+max-width:90%;
+height:100vh;
+background:white;
+z-index:2000;
+padding:25px;
+box-shadow:-10px 0 30px rgba(0,0,0,.3);
+transition:.4s;
+overflow-y:auto;
+}
+.cart-panel.open{
+right:0;
+}
+.cart-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+.close-button{
+width:35px;
+height:35px;
+border:none;
+background:#111;
+color:white;
+border-radius:50%;
+cursor:pointer;
+}
+.cart-item{
+display:flex;
+gap:12px;
+padding-bottom:15px;
+margin-bottom:15px;
+border-bottom:1px solid #ddd;
+}
+.cart-item img{
+width:70px;
+height:70px;
+object-fit:cover;
+border-radius:10px;
+}
+.cart-total{
+font-size:22px;
+font-weight:bold;
+margin:25px 0;
+}
+/* =========================
+PRODUCT POPUP
+========================= */
+.modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.8);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:3000;
+padding:20px;
+}
+.modal.show{
+display:flex;
+}
+.modal-content{
+position:relative;
+width:900px;
+max-width:100%;
+background:white;
+border-radius:20px;
+padding:25px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+}
+.modal-content img{
+width:100%;
+height:500px;
+object-fit:cover;
+border-radius:15px;
+}
+.modal-close{
+position:absolute;
+top:12px;
+right:12px;
+width:38px;
+height:38px;
+border:none;
+background:#111;
+color:white;
+border-radius:50%;
+cursor:pointer;
+font-size:20px;
+}
+/* =========================
+WHATSAPP
+========================= */
+.whatsapp{
+position:fixed;
+right:22px;
+bottom:22px;
+width:62px;
+height:62px;
+background:#25D366;
+color:white;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+text-decoration:none;
+z-index:1500;
+animation:whatsappPulse 1.8s infinite;
+box-shadow:0 5px 25px rgba(37,211,102,.6);
+}
+/* =========================
+FOOTER
+========================= */
+footer{
+background:#080808;
+color:white;
+text-align:center;
+padding:40px 20px;
+}
+footer a{
+color:#f4c542;
+text-decoration:none;
+}
+/* =========================
+ANIMATIONS
+========================= */
+@keyframes heroAnimation{
+from{
+opacity:0;
+transform:translateY(50px);
+}
+to{
+
+opacity:1;
+transform:translateY(0);
+}
+}
+@keyframes productAnimation{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+@keyframes whatsappPulse{
+0%{
+box-shadow:0 0 0 0 rgba(37,211,102,.7);
+}
+70%{
+box-shadow:0 0 0 20px rgba(37,211,102,0);
+}
+100%{
+box-shadow:0 0 0 0 rgba(37,211,102,0);
+}
+}
+/* =========================
+MOBILE
+========================= */
+@media(max-width:700px){
+header{
+flex-wrap:wrap;
+gap:15px;
+}
+nav{
+order:3;
+width:100%;
+justify-content:center;
+flex-wrap:wrap;
+gap:12px;
+}
+.hero h1{
+font-size:42px;
+}
+.hero p{
+font-size:16px;
+}
+.modal-content{
+grid-template-columns:1fr;
+max-height:90vh;
+overflow-y:auto;
+}
+.modal-content img{
+height:300px;
+}
+}
+</style>
+</head>
+<body>
+<!-- =========================
+HEADER
+========================= -->
+<header>
+<div class="logo">
+FRESHEN <span>ERA</span>
+</div>
+<nav>
+<a href="#home">Home</a>
+<a href="#products">Products</a>
+<a href="#about">About Us</a>
+<a href="#reviews">Reviews</a>
+<a href="#register">Register</a>
+<a href="#contact">Contact</a>
+</nav>
+<div class="cart-button" onclick="openCart()">
+🛒 Cart
+<span id="cartCount">0</span>
+</div>
+</header>
+<!-- =========================
+HERO
+========================= -->
+<section class="hero" id="home">
+<div class="hero-content">
+<h1>
+Welcome to
+<span>Freshen Era</span>
+</h1>
+<p>
+Fashion • Style • Jewellery • Watches • Accessories
+</p>
+<a href="#products" class="main-button">
+Explore Products
+</a>
+</div>
+</section>
+<!-- =========================
+PRODUCTS
+========================= -->
+<section id="products">
+<div class="section-title">
+<h2>Our Products</h2>
+<p>
+Explore our latest fashion collection
+</p>
+</div>
+<div class="categories">
+<button
+class="category-button active"
+onclick="filterProducts('all',this)">
+All
+</button>
+<button
+class="category-button"
+onclick="filterProducts('shoes',this)">
+Shoes
+</button>
+<button
+class="category-button"
+onclick="filterProducts('men',this)">
+Men Clothes
+</button>
+<button
+class="category-button"
+onclick="filterProducts('women',this)">
+Women Clothes
+</button>
+<button
+class="category-button"
+onclick="filterProducts('scarf',this)">
+Scarfs
+</button>
+<button
+class="category-button"
+onclick="filterProducts('jewellery',this)">
+Jewellery
+</button>
+<button
+class="category-button"
+onclick="filterProducts('earrings',this)">
+Earrings
+</button>
+<button
+class="category-button"
+onclick="filterProducts('belt',this)">
+Belts
+</button>
+<button
+class="category-button"
+onclick="filterProducts('watch',this)">
+Watches
+</button>
+<button
+class="category-button"
+onclick="filterProducts('sunglasses',this)">
+Sunglasses
+</button>
+</div>
+<div class="products" id="productsContainer"></div>
+</section>
+<!-- =========================
+ABOUT US
+========================= -->
+<section class="about" id="about">
+<div class="section-title">
+<h2>About Freshen Era</h2>
+</div>
+<p>
+Freshen Era is a modern fashion and accessories store.
+We offer stylish products for men and women including
+shoes, clothes, jewellery, scarves, watches, sunglasses
+and many other fashion accessories.
+Our mission is to provide quality products and a beautiful
+online shopping experience.
+</p>
+<a
+class="instagram-button"
+href="https://instagram.com/freshen_era"
+target="_blank">
+📸 Follow us on Instagram
+</a>
+</section>
+<!-- =========================
+REVIEWS
+========================= -->
+<section id="reviews">
+<div class="section-title">
+<h2>Customer Reviews</h2>
+<p>
+What our customers say
+</p>
+</div>
+<div class="reviews">
+<div class="review">
+<div class="stars">
+★★★★★
+</div>
+<h3>Ahmed</h3>
+<p>
+Amazing products and excellent quality.
+</p>
+</div>
+<div class="review">
+<div class="stars">
+★★★★★
+</div>
+<h3>Ayesha</h3>
+<p>
+Beautiful jewellery and very attractive designs.
+</p>
+</div>
+<div class="review">
+<div class="stars">
+★★★★☆
+</div>
+<h3>Ali</h3>
+<p>
+Good quality products and excellent service.
+</p>
+</div>
+</div>
+</section>
+<!-- =========================
+REGISTRATION
+========================= -->
+<section id="register">
+<div class="section-title">
+<h2>Create Your Account</h2>
+<p>
+Register with Freshen Era
+</p>
+</div>
+<div class="form-box">
+<form onsubmit="registerUser(event)">
+<input
+type="text" placeholder="First Name"required>
+<input
+type="text" placeholder="Second Name" required>
+<input
+type="email" placeholder="Email Address" required>
+<input
+type="password" placeholder="Password" required>
+<input
+type="tel" placeholder="Mobile Number" required>
+<button
+class="main-button"
+type="submit">
+Register
+</button>
+</form>
+</div>
+</section>
+<!-- =========================
+CONTACT
+========================= -->
+<section id="contact">
+<div class="section-title">
+<h2>Contact Us</h2>
+<p>
+Send us a message
+</p>
+</div>
+<div class="form-box">
+<form onsubmit="sendMessage(event)">
+<input
+type="text" placeholder="Your Name" required>
+<input
+type="email"
+placeholder="Your Email" required>
+<input
+type="tel" placeholder="WhatsApp Number" required>
+<textarea
+rows="5"cplaceholder="Your Message"required>
+</textarea>
+<button
+class="main-button"
+type="submit">
+Send Message
+</button>
+</form>
+</div>
+</section>
+<!-- =========================
+FLOATING WHATSAPP
+========================= -->
+<a
+class="whatsapp"
+href="https://wa.me/03334829619"
+target="_blank"
+title="Chat with us on WhatsApp">
+💬
+</a>
+<!-- =========================
+CART PANEL
+========================= -->
+<div class="cart-panel" id="cartPanel">
+<div class="cart-header">
+<h2>Your Cart</h2>
+<button
+class="close-button"
+onclick="closeCart()">
+
+</button>
+</div>
+<div id="cartItems"></div>
+<div class="cart-total">
+Total:
+Rs. <span id="cartTotal">0</span>
+</div>
+<button
+class="main-button"
+onclick="orderOnWhatsApp()">
+Order Now on WhatsApp
+</button>
+</div>
+<!-- =========================
+PRODUCT MODAL
+========================= -->
+<div
+class="modal"
+id="productModal">
+<div class="modal-content">
+<button
+class="modal-close"
+onclick="closeModal()">
+×
+</button>
+<img
+id="modalImage"
+src=""
+alt="Product"
+>
+<div>
+
+<h2 id="modalTitle">
+Product
+</h2>
+<br>
+<p id="modalDescription">
+Premium quality product from Freshen Era.
+</p>
+<br>
+<h2 id="modalPrice">
+Rs. 0
+</h2>
+<br>
+<button
+class="main-button"
+id="modalCartButton">
+Add to Cart
+</button>
+</div>
+</div>
+</div>
+<!-- =========================
+FOOTER
+========================= -->
+<footer>
+<h2>
+FRESHEN ERA
+</h2>
+<br>
+<p>
+Fashion • Style • Elegance
+</p>
+<br>
+<p>
+
+Instagram:
+<a
+href="https://instagram.com/freshen_era"
+target="_blank">
+@freshen_era
+</a>
+</p>
+<br>
+<p>
+© 2026 Freshen Era — All Rights Reserved.
+</p>
+</footer>
+<script>
+/* =========================
+PRODUCTS DATA
+========================= */
+const products = [
+{
+name:"Classic Sneakers",
+category:"shoes",
+price:3500,
+image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80"
+},
+{
+name:"Men Fashion Shirt",
+category:"men",
+price:2800,
+image:"https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=800&q=80"
+},
+{
+name:"Women Fashion Dress",
+category:"women",
+price:4500,
+image:"https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=800&q=80"
+},
+{
+name:"Luxury Scarf",
+category:"scarf",
+price:1800,
+image:"https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&w=800&q=80"
+},
+{
+name:"Gold Jewellery",
+category:"jewellery",
+price:5500,
+image:"https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=800&q=80"
+},
+{
+name:"Elegant Earrings",
+category:"earrings",
+price:2200,
+image:"https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=800&q=80"
+},
+{
+name:"Leather Belt",
+category:"belt",
+price:1900,
+image:"https://images.unsplash.com/photo-1624222247344-550fb60583dc?auto=format&fit=crop&w=800&q=80"
+},
+{
+name:"Classic Watch",
+category:"watch",
+price:6500,
+image:"https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80"
+},
+{
+name:"Premium Sunglasses",
+category:"sunglasses",
+price:2500,
+image:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80"
+},
+{
+name:"Fashion Cape",
+category:"cape",
+price:3900,
+image:"https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80"
+},
+{
+name:"Men Casual Shoes",
+category:"shoes",
+price:3200,
+image:"https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80"
+},
+{
+name:"Women Handbag",
+category:"women",
+price:4200,
+image:"HAND BAGS/1.jpg"
+},
+{
+name:"Women Handbag",
+category:"women",
+price:4200,
+image:"HAND BAGS/2.jpg"
+},
+{
+name:"Women Handbag",
+category:"women",
+price:4200,
+image:"HAND BAGS/3.jpg"
+},
+{
+name:"Women Handbag",
+category:"women",
+price:4200,
+image:"HAND BAGS/4.jpg"
+},
+{
+name:"Women Handbag",
+category:"women",
+price:4200,
+image:"HAND BAGS/5.jpg"
+},
+{
+name:"Women Handbag",
+category:"women",
+price:4200,
+image:"HAND BAGS/7.jpg"
+},
+];
+let cart = [];
+/* =========================
+DISPLAY PRODUCTS
+========================= */
+function displayProducts(list){
+const container =
+document.getElementById("productsContainer");
+container.innerHTML = "";
+list.forEach((product,index)=>{
+container.innerHTML += `
+<div class="product">
+<div class="product-image-box">
+<img
+src="${product.image}"
+alt="${product.name}"
+>
+</div>
+<div class="product-info">
+<h3>
+${product.name}
+</h3>
+<div class="price">
+Rs. ${product.price}
+</div>
+<div class="product-buttons">
+<button
+class="visit-button"
+onclick="viewProduct(${index})">
+Visit
+</button>
+<button
+class="add-button"
+onclick="addToCart(${index})">
+Add to Cart
+</button>
+</div>
+</div>
+</div>
+`;
+});
+}
+/* =========================
+FILTER PRODUCTS
+========================= */
+function filterProducts(category,button){
+document
+.querySelectorAll(".category-button")
+.forEach(btn=>{
+btn.classList.remove("active");
+});
+button.classList.add("active");
+if(category==="all"){
+displayProducts(products);
+}else{
+displayProducts(
+products.filter(
+product=>product.category===category
+)
+);
+}
+}
+/* =========================
+ADD TO CART
+========================= */
+function addToCart(index){
+cart.push(products[index]);
+updateCart();
+alert(
+products[index].name +
+" has been added to your cart."
+);
+}
+/* =========================
+UPDATE CART
+========================= */
+function updateCart(){
+document.getElementById("cartCount").innerText =
+cart.length;
+const cartItems =
+document.getElementById("cartItems");
+cartItems.innerHTML = "";
+let total = 0;
+cart.forEach((product,index)=>{
+total += product.price;
+cartItems.innerHTML += `
+<div class="cart-item">
+<img
+src="${product.image}"
+>
+<div>
+<strong>
+${product.name}
+</strong>
+<br>
+Rs. ${product.price}
+<br><br>
+<button
+onclick="removeFromCart(${index})">
+Remove
+</button>
+</div>
+</div>
+`;
+});
+document.getElementById("cartTotal").innerText =
+total;
+}
+/* =========================
+REMOVE FROM CART
+========================= */
+function removeFromCart(index){
+cart.splice(index,1);
+updateCart();
+}
+/* =========================
+OPEN CART
+========================= */
+function openCart(){
+document
+.getElementById("cartPanel")
+.classList.add("open");
+}
+/* =========================
+CLOSE CART
+========================= */
+function closeCart(){
+document
+.getElementById("cartPanel")
+.classList.remove("open");
+}
+/* =========================
+VIEW PRODUCT
+========================= */
+function viewProduct(index){
+const product = products[index];
+document.getElementById("modalImage").src =
+product.image;
+document.getElementById("modalTitle").innerText =
+product.name;
+document.getElementById("modalDescription").innerText =
+"Premium quality product from Freshen Era. " +
+"Stylish design, modern look and excellent choice " +
+"for your fashion collection.";
+document.getElementById("modalPrice").innerText =
+"Rs. " + product.price;
+document.getElementById("modalCartButton").onclick =
+function(){
+addToCart(index);
+closeModal();
+};
+document
+.getElementById("productModal")
+.classList.add("show");
+}
+/* =========================
+CLOSE PRODUCT
+========================= */
+function closeModal(){
+document
+.getElementById("productModal")
+.classList.remove("show");
+}
+/* =========================
+REGISTER
+========================= */
+function registerUser(event){
+event.preventDefault();
+alert(
+"Registration successful! Welcome to Freshen Era."
+);
+event.target.reset();
+}
+/* =========================
+CONTACT
+========================= */
+function sendMessage(event){
+event.preventDefault();
+alert(
+"Thank you! Your message has been sent."
+);
+event.target.reset();
+}
+/* =========================
+WHATSAPP ORDER
+========================= */
+function orderOnWhatsApp(){
+if(cart.length === 0){
+alert("Your cart is empty!");
+return;
+}
+let message =
+"Hello Freshen Era! I want to order:%0A%0A";
+cart.forEach(product=>{
+message +="• " +
+product.name +" - Rs. " +
+product.price +"%0A";
+});
+window.open(
+"https://wa.me/0333429619?text=" +
+message,
+"_blank"
+);
+}
+/* =========================
+START WEBSITE
+========================= */
+displayProducts(products);
+</script>
+</body>
+</html>
